@@ -1,0 +1,276 @@
+{
+    "metadata": {
+        "version": "1.0.0",
+        "lastUpdated": "2025-01-01",
+        "description": "Knowledge base for the Managed Services - PMO BD Hub chatbot. This file can be used as a reference for LLM-based chatbot integrations or as a standalone JSON KB.",
+        "howToUpdate": "Add new entries to the 'entries' array. Each entry needs an 'id', 'topic', 'keywords' array, 'question', and 'answer'. Restart or reload the page after editing."
+    },
+    "contacts": {
+        "generalEmail": "",
+        "serviceLinesLeads": [
+            {
+                "service": "PMO",
+                "role": "Service Lead",
+                "name": "[Update with actual name]",
+                "email": "[Update with actual email]"
+            },
+            {
+                "service": "VRO",
+                "role": "Service Lead",
+                "name": "[Update with actual name]",
+                "email": "[Update with actual email]"
+            },
+            {
+                "service": "PMO Admin",
+                "role": "Service Lead",
+                "name": "[Update with actual name]",
+                "email": "[Update with actual email]"
+            }
+        ],
+        "leadershipTeam": "[Update with PH MS Leadership Team details]"
+    },
+    "services": {
+        "msPMO": {
+            "fullName": "PMO (Project Management Office as a Service)",
+            "summary": "End-to-end project governance, planning, RAID management, stakeholder reporting, and delivery assurance for complex transformation programmes.",
+            "capabilities": [
+                "Project planning & scheduling",
+                "Governance & tollgate support",
+                "RAID management",
+                "Status reporting & dashboards",
+                "Resource & budget tracking",
+                "Stakeholder management",
+                "Quality assurance",
+                "Transition & close-out"
+            ],
+            "typicalTeamSize": "3-15 FTEs",
+            "engagementDuration": "6-24 months",
+            "costSavings": "30-40% vs onshore",
+            "mobilisationTime": "2-4 weeks",
+            "toolsSupported": ["MS Project", "Jira", "Smartsheet", "Excel", "PowerPoint"]
+        },
+        "msVRO": {
+            "fullName": "VRO (Value Realisation Office as a Service)",
+            "summary": "Benefits tracking, value mapping, business case validation, and outcomes-based reporting connecting programme delivery to measurable client value.",
+            "capabilities": [
+                "Benefits identification & mapping",
+                "Value realisation tracking",
+                "Business case support",
+                "KPI & outcomes dashboards",
+                "Stakeholder value narratives",
+                "ROI modelling",
+                "Post-implementation reviews",
+                "Benefits sustainability"
+            ],
+            "typicalTeamSize": "2-8 FTEs",
+            "engagementDuration": "12-36 months",
+            "costSavings": "30-40% vs onshore",
+            "mobilisationTime": "2-3 weeks",
+            "toolsSupported": ["Excel", "PowerPoint", "Power BI", "Tableau"]
+        },
+        "msAdmin": {
+            "fullName": "PMO Admin (PMO Administration as a Service)",
+            "summary": "Operational and administrative backbone — meeting coordination, document management, logistics, onboarding support, and engagement housekeeping.",
+            "capabilities": [
+                "Meeting scheduling & minutes",
+                "Document management",
+                "Onboarding support",
+                "Engagement logistics",
+                "Time & expense tracking",
+                "Communication support",
+                "Data entry & maintenance",
+                "Offboarding procedures"
+            ],
+            "typicalTeamSize": "1-5 FTEs",
+            "engagementDuration": "Ongoing / As needed",
+            "costSavings": "40%+ vs onshore",
+            "mobilisationTime": "1-2 weeks",
+            "toolsSupported": ["SharePoint", "Teams", "Outlook", "Excel", "Word"]
+        }
+    },
+    "guidebooks": {
+        "pmoGuidebook": {
+            "name": "PMO Guidebook",
+            "description": "Definitive guide to delivering PMO services — covers engagement setup, governance, RAID, reporting, QA, and close-out.",
+            "link": "https://pwcapac.sharepoint.com/:p:/r/teams/PH-INT-CNST-PH-PMO-Team/_layouts/15/Doc.aspx?sourcedoc=%7B4CA2278E-44C8-47A0-B217-B6774EB01261%7D&file=PMO%20Guidebook.pptx&action=edit&mobileredirect=true",
+            "topics": ["Engagement Setup", "Governance", "RAID", "Reporting", "QA", "Close-out", "Stakeholder Management"]
+        },
+        "adminGuidebook": {
+            "name": "PMO Admin Guidebook",
+            "description": "Operational handbook for Admin teams — meeting coordination, document management, onboarding, logistics, and offboarding.",
+            "link": "https://pwcapac-my.sharepoint.com/.../PMO%20Admin%20Guidebook",
+            "topics": ["Meeting Coordination", "Document Management", "Onboarding", "Logistics", "Offboarding", "SharePoint"]
+        },
+        "vroGuidebook": {
+            "name": "VRO Guidebook",
+            "description": "Strategic VRO methodology — benefits identification, mapping, tracking, business case support, KPIs, and value reporting.",
+            "link": "https://pwcapac.sharepoint.com/.../VRO%20Guidebook",
+            "topics": ["Benefits Mapping", "Value Tracking", "KPIs", "Business Case", "ROI", "Dashboards", "Reporting"]
+        }
+    },
+    "approach": {
+        "name": "Enable — Execute — Evolve",
+        "phases": [
+            {
+                "phase": "Enable",
+                "number": 1,
+                "description": "Rapid onboarding, stakeholder alignment, governance framework setup, and tooling configuration.",
+                "activities": ["Engagement kickoff", "Governance model design", "Template deployment", "Team onboarding"]
+            },
+            {
+                "phase": "Execute",
+                "number": 2,
+                "description": "Disciplined delivery — status tracking, RAID management, reporting cycles, and stakeholder communications.",
+                "activities": ["Weekly/monthly reporting", "Risk & issue escalation", "Benefits tracking", "QA reviews"]
+            },
+            {
+                "phase": "Evolve",
+                "number": 3,
+                "description": "Retrospectives, lessons learned, process optimisation, and capability uplift.",
+                "activities": ["Continuous improvement", "Lessons learned", "Process automation", "Maturity assessments"]
+            }
+        ]
+    },
+    "entries": [
+        {
+            "id": "kb-001",
+            "topic": "PMO Overview",
+            "keywords": ["ms-pmo", "pmo as a service", "pmo service", "what is pmo", "what is ms-pmo", "project management office"],
+            "question": "What is PMO as a Service?",
+            "answer": "PMO (Project Management Office as a Service) provides end-to-end project governance, planning, RAID management, stakeholder reporting, and delivery assurance for complex transformation programmes. Typical team: 3-15 FTEs, 6-24 month engagements, 30-40% cost savings."
+        },
+        {
+            "id": "kb-002",
+            "topic": "VRO Overview",
+            "keywords": ["ms-vro", "vro as a service", "vro service", "what is vro", "value realisation"],
+            "question": "What is VRO as a Service?",
+            "answer": "VRO (Value Realisation Office as a Service) focuses on benefits tracking, value mapping, business case validation, and outcomes-based reporting. Typical team: 2-8 FTEs, 12-36 month engagements, 30-40% cost savings."
+        },
+        {
+            "id": "kb-003",
+            "topic": "PMO Admin Overview",
+            "keywords": ["ms-admin", "admin as a service", "admin service", "pmo admin", "administration"],
+            "question": "What is PMO Admin as a Service?",
+            "answer": "PMO Admin (PMO Administration as a Service) provides operational support — meeting coordination, document management, onboarding, logistics, and time & expense tracking. Typical team: 1-5 FTEs, 40%+ cost savings."
+        },
+        {
+            "id": "kb-004",
+            "topic": "PMO Guidebook",
+            "keywords": ["pmo guidebook", "pmo guide", "guidebook pmo"],
+            "question": "What's inside the PMO Guidebook?",
+            "answer": "The PMO Guidebook covers engagement setup, governance frameworks, RAID management, project planning, status reporting, resource & budget tracking, QA protocols, stakeholder management, and transition/close-out procedures."
+        },
+        {
+            "id": "kb-005",
+            "topic": "Admin Guidebook",
+            "keywords": ["admin guidebook", "admin guide", "pmo admin guidebook"],
+            "question": "What's inside the Admin Guidebook?",
+            "answer": "The Admin Guidebook covers meeting coordination, document management, onboarding/offboarding, engagement logistics, time & expense tracking, communication support, and data entry procedures."
+        },
+        {
+            "id": "kb-006",
+            "topic": "VRO Guidebook",
+            "keywords": ["vro playbook", "vro guide", "vro guidebook", "value playbook"],
+            "question": "What's inside the VRO Guidebook?",
+            "answer": "The VRO Guidebook covers VRO fundamentals, benefits identification & mapping, business case support, KPI definition, value tracking & measurement, benefits reporting, stakeholder value narratives, and post-implementation reviews."
+        },
+        {
+            "id": "kb-007",
+            "topic": "RAID Templates",
+            "keywords": ["raid", "raid log", "risk register", "issue log", "risk", "issue"],
+            "question": "Where can I find RAID-related templates?",
+            "answer": "RAID templates include: RAID Log Template (consolidated tracker), Risk Register (with probability/impact scoring), Issue Log (with resolution tracking), Assumption Log, and Dependency Register. All available in the Templates Library."
+        },
+        {
+            "id": "kb-008",
+            "topic": "Status Report Templates",
+            "keywords": ["status report", "weekly report", "monthly report", "steerco"],
+            "question": "What status report templates are available?",
+            "answer": "Status reporting templates include: Weekly Status Report, Monthly Status Report, SteerCo Pack Template, Programme Dashboard Template, and Workstream Status Summary. All in PowerPoint/Excel format."
+        },
+        {
+            "id": "kb-009",
+            "topic": "Contacts",
+            "keywords": ["contact", "contacts", "email", "who", "team", "reach", "lead"],
+            "question": "Who are the PH MS contacts?",
+            "answer": "General inquiries: . Service leads: PMO Service Lead, VRO Service Lead, PMO Admin Service Lead, PH MS Leadership Team. Check internal directory for specific names."
+        },
+        {
+            "id": "kb-010",
+            "topic": "Enable Execute Evolve",
+            "keywords": ["enable execute evolve", "approach", "methodology", "delivery model"],
+            "question": "What is the Enable-Execute-Evolve approach?",
+            "answer": "Our three-phase model: (1) Enable — rapid onboarding, governance setup, tooling; (2) Execute — disciplined delivery, reporting, RAID management; (3) Evolve — retrospectives, process optimisation, capability uplift."
+        },
+        {
+            "id": "kb-011",
+            "topic": "Cost Savings",
+            "keywords": ["savings", "cost", "value proposition", "why managed services", "benefit"],
+            "question": "What cost savings does Managed Services deliver?",
+            "answer": "30-40% cost savings compared to onshore delivery for PMO and VRO, and 40%+ for Admin services. Value drivers include scalable resourcing, standardised delivery, 100+ ready templates, and proven governance frameworks."
+        },
+        {
+            "id": "kb-012",
+            "topic": "BD Tools",
+            "keywords": ["bd", "business development", "pitch", "elevator", "position", "sell"],
+            "question": "What BD tools are available?",
+            "answer": "The BD Tools page includes elevator pitch examples, capability statements, BD FAQ, positioning guides for PMO/VRO, and links to key collateral for client conversations."
+        },
+        {
+            "id": "kb-013",
+            "topic": "Onboarding",
+            "keywords": ["onboarding", "new joiner", "getting started", "start", "new"],
+            "question": "How do I get started as a new team member?",
+            "answer": "Start with: (1) Read your role's Guidebook, (2) Browse available Templates, (3) Review the Service Catalogue, (4) Check BD Tools for positioning. Your engagement manager will provide assignment details."
+        },
+        {
+            "id": "kb-014",
+            "topic": "Project Planning",
+            "keywords": ["project plan", "planning", "schedule", "gantt", "wbs"],
+            "question": "What project planning templates are available?",
+            "answer": "Planning templates include: Project Plan Template, Project Schedule, Milestone Tracker, Workstream Plan Template, Sprint Planning Template, and Resource Plan Template."
+        },
+        {
+            "id": "kb-015",
+            "topic": "Governance",
+            "keywords": ["governance", "steerco", "steering committee", "tollgate", "raci"],
+            "question": "What governance templates are available?",
+            "answer": "Governance templates include: Governance Framework Template, SteerCo Pack Template, Tollgate Checklist, RACI Matrix Template, Decision Log Template, and Escalation Log Template."
+        },
+        {
+            "id": "kb-016",
+            "topic": "Benefits Templates",
+            "keywords": ["benefits", "benefits map", "benefits register", "benefits tracking"],
+            "question": "What benefits-related templates are available?",
+            "answer": "Benefits templates include: Benefits Register, Benefits Map, Benefits Realisation Plan, Benefits Baseline Assessment, Benefits Variance Analysis, Benefits Categorisation Framework, and Benefits Sustainability Checklist."
+        },
+        {
+            "id": "kb-017",
+            "topic": "Business Case",
+            "keywords": ["business case", "roi", "cost benefit", "investment case"],
+            "question": "What business case templates are available?",
+            "answer": "Business case templates include: Business Case Template, ROI Calculator, Cost-Benefit Analysis Template, Investment Case Summary, and Scenario Planning Template."
+        },
+        {
+            "id": "kb-018",
+            "topic": "Template Count",
+            "keywords": ["how many templates", "template count", "number of templates", "total templates"],
+            "question": "How many templates do we have?",
+            "answer": "We have 110+ templates across 4 categories: PMO (~45 templates), VRO (~24 templates), PPE (~15 templates), and Admin (~20 templates). All are available in the searchable Templates Library."
+        },
+        {
+            "id": "kb-019",
+            "topic": "Service Catalogue",
+            "keywords": ["service catalogue", "fy26", "catalogue", "catalog", "offerings"],
+            "question": "What is the FY26 Service Catalogue?",
+            "answer": "The FY26 Service Catalogue outlines three core offerings: PMO as a Service, VRO as a Service, and PMO Admin as a Service. It includes engagement lifecycle details, case studies, service snapshots, and a comparison table."
+        },
+        {
+            "id": "kb-020",
+            "topic": "Meeting Templates",
+            "keywords": ["meeting", "minutes", "agenda", "meeting management"],
+            "question": "What meeting-related templates are available?",
+            "answer": "Meeting templates include: Meeting Agenda Template, Meeting Minutes Template, Meeting Minutes Template (Admin), Daily Stand-up Log, and Room Booking Tracker."
+        }
+    ]
+}
