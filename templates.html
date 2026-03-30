@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Templates Library — Managed Services - PMO BD Hub</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<!-- ===== MOBILE NAV OVERLAY ===== -->
+<div class="nav-overlay" id="navOverlay"></div>
+
+<!-- ===== HEADER ===== -->
+<header class="site-header" id="siteHeader">
+    <div class="header-container">
+        <div class="logo-area">
+            <div class="pwc-logo">
+                <svg viewBox="0 0 120 40" class="logo-svg">
+                    <text x="0" y="30" font-family="'Playfair Display', serif" font-size="28" font-weight="700" fill="#D04A02">PwC</text>
+                </svg>
+            </div>
+            <div class="logo-divider"></div>
+            <span class="logo-text">Managed Services - PMO BD Hub</span>
+        </div>
+        <nav class="main-nav" id="mainNav">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="guidebooks.html" class="nav-link">Guidebooks</a>
+            <a href="templates.html" class="nav-link active">Templates</a>
+            <a href="service-catalogue.html" class="nav-link">Service Catalogue</a>
+            <a href="bd-tools.html" class="nav-link">BD Tools</a>
+            <a href="framework.html" class="nav-link">Framework</a>
+            <a href="team.html" class="nav-link">BD Tools</a>
+            <a href="team.html" class="nav-link">Our Team</a>
+        </nav>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<!-- ===== PAGE BANNER ===== -->
+<section class="page-banner">
+    <p class="hero-eyebrow">Artefacts &amp; Deliverables</p>
+    <h1>Templates Library</h1>
+    <p>Browse, search, and access our PMO standard templates — all linked directly to SharePoint. Every template follows PwC quality standards and is engagement-ready. More templates will be added as they become available.</p>
+</section>
+
+<!-- ===== TEMPLATES SECTION ===== -->
+<section class="section">
+    <div class="container">
+
+        <!-- CONTROLS ROW -->
+        <div class="template-controls fade-in">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="templateSearch" placeholder="Search templates by name, description, or keyword...">
+            </div>
+            <select class="filter-select" id="categoryFilter">
+                <option value="all">All Categories</option>
+                <option value="PMO">PMO</option>
+                <option value="VRO">VRO</option>
+                <option value="PPE">PPE</option>
+                <option value="Admin">Admin</option>
+            </select>
+            <select class="filter-select" id="fileTypeFilter">
+                <option value="all">All File Types</option>
+                <option value="Excel">Excel (.xlsx)</option>
+                <option value="PowerPoint">PowerPoint (.pptx)</option>
+                <option value="Word">Word (.docx)</option>
+                <option value="PDF">PDF (.pdf)</option>
+            </select>
+        </div>
+
+        <!-- RESULTS COUNT -->
+        <p class="template-count fade-in">Showing <strong id="resultCount">0</strong> of <strong id="totalCount">0</strong> templates</p>
+
+        <!-- TABLE -->
+        <div class="fade-in" style="overflow-x:auto;">
+            <table class="templates-table" id="templatesTable">
+                <thead>
+                    <tr>
+                        <th style="width:5%;">#</th>
+                        <th style="width:25%;">Template Name</th>
+                        <th style="width:10%;">Category</th>
+                        <th style="width:10%;">File Type</th>
+                        <th style="width:38%;">Description</th>
+                        <th style="width:12%;">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="templatesBody">
+                    <!-- Rows injected by templates.js -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- NO RESULTS -->
+        <div class="no-results" id="noResults" style="display:none;">
+            <i class="fas fa-search"></i>
+            <h3>No templates found</h3>
+            <p>Try adjusting your search or filter criteria.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== CATEGORY OVERVIEW ===== -->
+<section class="section section-accent">
+    <div class="container">
+        <div class="section-header fade-in">
+            <h2 class="section-title">Templates by Category</h2>
+            <p class="section-subtitle">Understand what each template category covers and when to use them.</p>
+        </div>
+        <div class="quick-grid">
+            <div class="quick-card fade-in" style="cursor:default;">
+                <i class="fas fa-project-diagram" style="color:#D04A02;"></i>
+                <h4>PMO Templates</h4>
+                <p>Project plans, RAID logs, status reports, governance packs, SteerCo decks, resource trackers, change requests, and tollgate checklists.</p>
+            </div>
+            <div class="quick-card fade-in" style="cursor:default;">
+                <i class="fas fa-chart-bar" style="color:#F0AB00;"></i>
+                <h4>VRO Templates</h4>
+                <p>Benefits maps, value trackers, business case templates, KPI dashboards, benefits realisation reports, and ROI calculators.</p>
+            </div>
+            <div class="quick-card fade-in" style="cursor:default;">
+                <i class="fas fa-clipboard-check" style="color:#E0301E;"></i>
+                <h4>PPE Templates</h4>
+                <p>Project performance evaluations, health checks, maturity assessments, quality scorecards, and retrospective templates.</p>
+            </div>
+            <div class="quick-card fade-in" style="cursor:default;">
+                <i class="fas fa-cogs" style="color:#2D2D2D;"></i>
+                <h4>Admin Templates</h4>
+                <p>Meeting minutes, onboarding checklists, distribution lists, document registers, offboarding forms, and communication templates.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== HOW TO USE ===== -->
+<section class="section">
+    <div class="container">
+        <div class="section-header fade-in">
+            <h2 class="section-title">How to Use These Templates</h2>
+            <p class="section-subtitle">Follow these guidelines to get the most value from the template library.</p>
+        </div>
+        <div class="three-col-grid">
+            <div class="service-card fade-in">
+                <div class="service-icon" style="background:#D04A02;">
+                    <i class="fas fa-download"></i>
+                </div>
+                <h3>1. Download &amp; Customise</h3>
+                <p>Click the link to open the template in SharePoint. Download or create a copy, then customise it with your engagement-specific details — client name, dates, team members, and project context.</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon" style="background:#F0AB00;">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
+                <h3>2. Apply Client Branding</h3>
+                <p>Where required, apply the client's branding (logos, colours) while maintaining PwC structural standards. Keep the content framework intact — it reflects our proven methodology.</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon" style="background:#E0301E;">
+                    <i class="fas fa-sync-alt"></i>
+                </div>
+                <h3>3. Iterate &amp; Improve</h3>
+                <p>Templates are living documents. Update them as the engagement evolves. If you develop improvements, share them with the MS team so we can uplift the standard template for everyone.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <svg viewBox="0 0 80 30" class="logo-svg-sm">
+                        <text x="0" y="24" font-family="'Playfair Display', serif" font-size="22" font-weight="700" fill="#D04A02">PwC</text>
+                    </svg>
+                </div>
+                <p>PwC Philippines &mdash; Managed Services PMO</p>
+                <p class="footer-disclaimer">Internal resource hub for authorised PwC personnel only.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="guidebooks.html">Guidebooks</a></li>
+                    <li><a href="templates.html">Templates</a></li>
+                    <li><a href="service-catalogue.html">Service Catalogue</a></li>
+                    <li><a href="bd-tools.html">BD Tools</a></li>
+                    <li><a href="team.html">Our Team</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>BD Leadership</h4>
+                <ul>
+                    <li><a href="#">Katherine May Habelito &mdash; BD Sponsor</a></li>
+                    <li><a href="#">Jillyen Pagcaliwagan &mdash; BD Lead</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 PwC Philippines. All rights reserved. Internal use only.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- ===== CHATBOT ===== -->
+<button class="chatbot-fab" id="chatbotFab" aria-label="Open assistant">
+    <i class="fas fa-comment-dots"></i>
+</button>
+<div class="chatbot-window" id="chatbotWindow">
+    <div class="chatbot-header">
+        <div class="chatbot-header-left">
+            <div class="chatbot-avatar"><i class="fas fa-robot"></i></div>
+            <div class="chatbot-header-info">
+                <h4>PMO Hub Assistant</h4>
+                <span>Ask me about services, templates &amp; more</span>
+            </div>
+        </div>
+        <button class="chatbot-close" id="chatbotClose"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="chatbot-messages" id="chatbotMessages">
+        <div class="chat-msg bot">👋 Hi! I'm the <strong>PMO Hub Assistant</strong>. Need help finding a template? Just ask!</div>
+    </div>
+    <div class="chatbot-suggestions" id="chatbotSuggestions">
+        <button class="suggestion-chip" data-query="Where can I find the RAID Log template?">Find RAID Log</button>
+        <button class="suggestion-chip" data-query="What templates do we have for status reports?">Status Reports</button>
+        <button class="suggestion-chip" data-query="What VRO templates are available?">VRO Templates</button>
+        <button class="suggestion-chip" data-query="Where is the project plan template?">Project Plan</button>
+    </div>
+    <div class="chatbot-input-area">
+        <input type="text" id="chatbotInput" placeholder="Type your question..." autocomplete="off">
+        <button class="chatbot-send" id="chatbotSend"><i class="fas fa-paper-plane"></i></button>
+    </div>
+</div>
+
+<!-- ===== SCRIPTS ===== -->
+<script src="js/main.js"></script>
+<script src="js/templates.js"></script>
+<script src="js/chatbot.js"></script>
+
+</body>
+</html>

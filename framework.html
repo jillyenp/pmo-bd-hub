@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PMO Governance Framework — Managed Services - PMO BD Hub</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+<style>
+    .gov-overview-bar{background:linear-gradient(135deg,#2D2D2D,#1a1a1a);border-radius:var(--radius-lg);padding:36px 48px;text-align:center;position:relative;overflow:hidden;margin-bottom:0;border-bottom-left-radius:0;border-bottom-right-radius:0}
+    .gov-overview-bar::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,transparent,#eb8c00,#D04A02,#eb8c00,transparent)}
+    .gov-overview-bar h3{color:#fff;font-size:1.5rem;margin-bottom:8px}
+    .gov-overview-bar p{color:rgba(255,255,255,.55);font-size:.95rem;max-width:680px;margin:0 auto}
+    .gov-vro-strip{background:linear-gradient(135deg,#3a3a3a,#2D2D2D);padding:18px 32px;text-align:center}
+    .gov-vro-strip h4{color:#D04A02;font-family:var(--font-body);font-size:1.05rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;margin-bottom:4px}
+    .gov-vro-strip p{color:rgba(255,255,255,.45);font-size:.78rem;margin:0}
+    .gov-pmo-body{background:linear-gradient(180deg,#fff8f0,#ffedda);border:2px solid #ffd9b3;border-top:none;padding:36px 32px 28px}
+    .gov-pmo-title{text-align:center;margin-bottom:28px}
+    .gov-pmo-title h4{color:#D04A02;font-size:1.3rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+    .gov-pmo-title p{color:#8b7260;font-size:.88rem}
+    .phases-row{display:flex;align-items:stretch;gap:0;margin-bottom:28px}
+    .phase-box{flex:1;background:#fff;border:1.5px solid #f0d4b8;border-radius:var(--radius-md);padding:28px 18px;text-align:center;position:relative;transition:all .3s ease}
+    .phase-box::before{content:'';position:absolute;top:0;left:20%;right:20%;height:3px;background:linear-gradient(90deg,#D04A02,#eb8c00);border-radius:0 0 3px 3px}
+    .phase-box:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(208,74,2,.12);border-color:#eb8c00}
+    .phase-box h5{color:#D04A02;font-family:var(--font-body);font-size:.88rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px}
+    .phase-box p{color:#8b7260;font-size:.82rem;line-height:1.7;margin:0}
+    .phase-connector{display:flex;align-items:center;justify-content:center;width:44px;flex-shrink:0;color:#eb8c00;font-size:1.1rem}
+    .gov-admin-box{background:#fff;border:2px solid #ffd9b3;border-radius:var(--radius-md);padding:24px 32px;text-align:center}
+    .gov-admin-box h4{color:#D04A02;font-family:var(--font-body);font-size:1.1rem;font-weight:800;text-transform:uppercase;letter-spacing:2px;margin-bottom:4px}
+    .gov-admin-box .sub{color:#b07840;font-size:.82rem;font-style:italic;margin-bottom:10px}
+    .gov-admin-box .desc{color:#7a6550;font-size:.88rem;margin-bottom:18px;line-height:1.7}
+    .tag-row{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+    .gov-tag{background:#fff7ee;border:1.5px solid #ffd9b3;border-radius:20px;padding:7px 18px;font-size:.8rem;font-weight:600;color:#b05a1a;transition:all .2s ease}
+    .gov-tag:hover{background:#ffedda;border-color:#eb8c00;color:#D04A02}
+    .gov-footer-bar{background:var(--pwc-dark-gray);border-radius:0 0 var(--radius-lg) var(--radius-lg);padding:14px 32px;display:flex;justify-content:space-between;align-items:center}
+    .gov-footer-bar span{color:rgba(255,255,255,.35);font-size:.7rem;text-transform:uppercase;letter-spacing:.5px}
+    .gov-footer-bar .pwc-mark{color:#D04A02;font-family:var(--font-heading);font-weight:700;font-size:.9rem}
+    .desc-cards-row{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+    .desc-card-item{display:flex;align-items:flex-start;gap:14px;background:#fff;border:1px solid var(--pwc-border);border-radius:var(--radius-md);padding:22px;transition:all .3s ease}
+    .desc-card-item:hover{box-shadow:0 6px 20px rgba(0,0,0,.08);transform:translateY(-3px)}
+    .desc-icon{width:46px;height:46px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1rem;flex-shrink:0}
+    .desc-text h5{font-family:var(--font-body);font-size:.92rem;font-weight:700;color:var(--pwc-dark-gray);margin-bottom:6px}
+    .desc-text p{font-size:.82rem;color:var(--pwc-mid-gray);margin:0;line-height:1.7}
+    .phase-detail-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+    .phase-detail-card{background:var(--pwc-white);border:1px solid var(--pwc-border);border-radius:var(--radius-lg);padding:28px 24px;transition:all .3s ease}
+    .phase-detail-card:hover{box-shadow:var(--shadow-md);transform:translateY(-3px)}
+    .phase-detail-card i{font-size:1.5rem;margin-bottom:16px;display:block}
+    .phase-detail-card h4{font-family:var(--font-body);font-size:1rem;margin-bottom:14px}
+    @media(max-width:768px){.phases-row{flex-direction:column;gap:12px}.phase-connector{width:auto;height:30px}.desc-cards-row{grid-template-columns:1fr}.phase-detail-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:480px){.phase-detail-grid{grid-template-columns:1fr}}
+</style>
+
+<div class="nav-overlay" id="navOverlay"></div>
+<header class="site-header" id="siteHeader">
+    <div class="header-container">
+        <div class="logo-area">
+            <div class="pwc-logo"><svg viewBox="0 0 120 40" class="logo-svg"><text x="0" y="30" font-family="'Playfair Display', serif" font-size="28" font-weight="700" fill="#D04A02">PwC</text></svg></div>
+            <div class="logo-divider"></div>
+            <span class="logo-text">Managed Services - PMO BD Hub</span>
+        </div>
+        <nav class="main-nav" id="mainNav">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="guidebooks.html" class="nav-link">Guidebooks</a>
+            <a href="templates.html" class="nav-link">Templates</a>
+            <a href="service-catalogue.html" class="nav-link">Service Catalogue</a>
+            <a href="bd-tools.html" class="nav-link">BD Tools</a>
+            <a href="framework.html" class="nav-link active">Framework</a>
+            <a href="team.html" class="nav-link">Our Team</a>
+        </nav>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+    </div>
+</header>
+
+<section class="page-banner">
+    <p class="hero-eyebrow">Governance &amp; Standards</p>
+    <h1>PMO Governance Framework</h1>
+    <p>Our structured governance model defines how PMO services are delivered across the engagement lifecycle.</p>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="section-header fade-in">
+            <h2 class="section-title">The Framework</h2>
+            <p class="section-subtitle">How PMO as a Service operates within a structured governance model, with PMO Admin providing continuous standards and process compliance.</p>
+        </div>
+        <div class="fade-in">
+            <div class="gov-overview-bar"><h3>PMO Governance Framework</h3><p>Structured project delivery model ensuring value realisation through governance, execution &amp; oversight</p></div>
+            <div class="gov-vro-strip"><h4>VRO</h4><p>Value Realisation Office</p></div>
+            <div class="gov-pmo-body">
+                <div class="gov-pmo-title"><h4>PMO as a Service</h4><p>End-to-end project management capability delivering governance, execution &amp; administrative support</p></div>
+                <div class="phases-row">
+                    <div class="phase-box"><h5>Initiating</h5><p>Define scope, objectives, stakeholders &amp; secure authorisation to proceed.</p></div>
+                    <div class="phase-connector"><i class="fas fa-exchange-alt"></i></div>
+                    <div class="phase-box"><h5>Planning</h5><p>Develop roadmaps, schedules, budgets, resources &amp; risk strategies.</p></div>
+                    <div class="phase-connector"><i class="fas fa-exchange-alt"></i></div>
+                    <div class="phase-box"><h5>Executing / Monitoring / Controlling</h5><p>Deliver work, track progress, manage changes &amp; ensure quality.</p></div>
+                    <div class="phase-connector"><i class="fas fa-exchange-alt"></i></div>
+                    <div class="phase-box"><h5>Closing</h5><p>Finalise deliverables, capture lessons learned &amp; formally close out.</p></div>
+                </div>
+                <div class="gov-admin-box">
+                    <h4>PMO Admin</h4>
+                    <p class="sub">(PwC Internal Engagement Management Support)</p>
+                    <p class="desc">Governance backbone providing standards, documentation, reporting cadences &amp; process compliance across all phases</p>
+                    <div class="tag-row">
+                        <span class="gov-tag">📋 Reporting</span><span class="gov-tag">📄 Documentation</span><span class="gov-tag">⚙️ Process Compliance</span>
+                        <span class="gov-tag">📊 Dashboards</span><span class="gov-tag">🗂️ Resource Tracking</span><span class="gov-tag">✅ Quality Assurance</span>
+                    </div>
+                </div>
+            </div>
+            <div class="gov-footer-bar"><span>PMO Governance Framework &bull; Confidential &bull; For Internal Use Only</span><span class="pwc-mark">PwC</span></div>
+        </div>
+        <div class="desc-cards-row fade-in">
+            <div class="desc-card-item"><div class="desc-icon" style="background:#F0AB00;"><i class="fas fa-chart-line"></i></div><div class="desc-text"><h5>VRO — Value Realisation Office</h5><p>Strategic oversight ensuring initiatives deliver measurable value and ROI.</p></div></div>
+            <div class="desc-card-item"><div class="desc-icon" style="background:#D04A02;"><i class="fas fa-project-diagram"></i></div><div class="desc-text"><h5>PMO as a Service</h5><p>Full-spectrum delivery from initiation through closure with embedded governance.</p></div></div>
+            <div class="desc-card-item"><div class="desc-icon" style="background:#E0301E;"><i class="fas fa-cogs"></i></div><div class="desc-text"><h5>PMO Admin</h5><p>Standards, documentation, reporting rhythms &amp; compliance across all phases.</p></div></div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-accent">
+    <div class="container">
+        <div class="section-header fade-in"><h2 class="section-title">What Happens at Each Phase</h2></div>
+        <div class="phase-detail-grid">
+            <div class="phase-detail-card fade-in"><i class="fas fa-rocket" style="color:#D04A02;"></i><h4>Initiating</h4><ul class="service-features"><li>Project charter development</li><li>Stakeholder identification</li><li>Scope definition</li><li>Governance model setup</li><li>Team mobilisation</li></ul></div>
+            <div class="phase-detail-card fade-in"><i class="fas fa-map" style="color:#F0AB00;"></i><h4>Planning</h4><ul class="service-features"><li>WBS &amp; schedule development</li><li>Budget &amp; resource planning</li><li>Risk strategy &amp; RAID setup</li><li>Communication plan</li><li>Quality management plan</li></ul></div>
+            <div class="phase-detail-card fade-in"><i class="fas fa-play-circle" style="color:#E0301E;"></i><h4>Executing / Monitoring</h4><ul class="service-features"><li>Deliverable production</li><li>Status reporting cadence</li><li>RAID management</li><li>Change control</li><li>SteerCo &amp; governance forums</li></ul></div>
+            <div class="phase-detail-card fade-in"><i class="fas fa-flag-checkered" style="color:#2D2D2D;"></i><h4>Closing</h4><ul class="service-features"><li>Deliverable sign-off</li><li>Lessons learned capture</li><li>Knowledge transfer</li><li>Artefact archival</li><li>Formal engagement closure</li></ul></div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="section-header fade-in"><h2 class="section-title">How It All Connects</h2></div>
+        <div class="quick-grid">
+            <a href="guidebooks.html" class="quick-card fade-in"><i class="fas fa-book"></i><h4>Guidebooks</h4><p>Detailed processes for each layer</p></a>
+            <a href="templates.html" class="quick-card fade-in"><i class="fas fa-file-alt"></i><h4>Templates</h4><p>Artefacts used across all phases</p></a>
+            <a href="service-catalogue.html" class="quick-card fade-in"><i class="fas fa-layer-group"></i><h4>Service Catalogue</h4><p>Full service details</p></a>
+            <a href="bd-tools.html" class="quick-card fade-in"><i class="fas fa-briefcase"></i><h4>BD Tools</h4><p>Position the framework in BD conversations</p></a>
+        </div>
+    </div>
+</section>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="footer-logo"><svg viewBox="0 0 80 30" class="logo-svg-sm"><text x="0" y="24" font-family="'Playfair Display', serif" font-size="22" font-weight="700" fill="#D04A02">PwC</text></svg></div>
+                <p>PwC Philippines — Managed Services PMO</p>
+                <p class="footer-disclaimer">Internal resource hub for authorised PwC personnel only.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <ul><li><a href="index.html">Home</a></li><li><a href="guidebooks.html">Guidebooks</a></li><li><a href="templates.html">Templates</a></li><li><a href="service-catalogue.html">Service Catalogue</a></li><li><a href="bd-tools.html">BD Tools</a></li><li><a href="framework.html">Framework</a></li><li><a href="team.html">Our Team</a></li></ul>
+            </div>
+            <div class="footer-col">
+                <h4>BD Leadership</h4>
+                <ul><li><a href="team.html">Katherine May Habelito — BD Sponsor</a></li><li><a href="team.html">Jillyen Pagcaliwagan — BD Lead</a></li></ul>
+            </div>
+        </div>
+        <div class="footer-bottom"><p>&copy; 2025 PwC Philippines. All rights reserved. Internal use only.</p></div>
+    </div>
+</footer>
+<button class="chatbot-fab" id="chatbotFab" aria-label="Open assistant"><i class="fas fa-comment-dots"></i></button>
+<div class="chatbot-window" id="chatbotWindow">
+    <div class="chatbot-header">
+        <div class="chatbot-header-left"><div class="chatbot-avatar"><i class="fas fa-robot"></i></div><div class="chatbot-header-info"><h4>PMO Hub Assistant</h4><span>Ask me about services, templates &amp; more</span></div></div>
+        <button class="chatbot-close" id="chatbotClose"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="chatbot-messages" id="chatbotMessages"><div class="chat-msg bot">&#x1F44B; Ask me about the PMO Governance Framework!</div></div>
+    <div class="chatbot-suggestions" id="chatbotSuggestions">
+        <button class="suggestion-chip" data-query="What is the governance framework?">Framework overview</button>
+        <button class="suggestion-chip" data-query="What is PMO as a Service?">PMO overview</button>
+    </div>
+    <div class="chatbot-input-area">
+        <input type="text" id="chatbotInput" placeholder="Type your question..." autocomplete="off">
+        <button class="chatbot-send" id="chatbotSend"><i class="fas fa-paper-plane"></i></button>
+    </div>
+</div>
+<script src="js/main.js"></script>
+<script src="js/chatbot.js"></script>
+</body></html>

@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build Your Own BD Hub — Playbook</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --orange: #D04A02;
+            --orange-light: rgba(208,74,2,0.08);
+            --dark: #2D2D2D;
+            --mid: #6B6B6B;
+            --light: #F2F2F2;
+            --white: #FFFFFF;
+            --yellow: #F0AB00;
+            --red: #E0301E;
+            --border: #E0E0E0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            color: var(--dark);
+            background: var(--white);
+            line-height: 1.7;
+        }
+
+        /* Header */
+        .pb-header {
+            background: linear-gradient(135deg, #2D2D2D 0%, #1a1a1a 100%);
+            padding: 48px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .pb-header::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(208,74,2,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .pb-header .eyebrow {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--yellow);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 12px;
+            position: relative;
+        }
+        .pb-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            color: var(--white);
+            margin-bottom: 12px;
+            position: relative;
+        }
+        .pb-header h1 span { color: var(--orange); }
+        .pb-header p {
+            color: rgba(255,255,255,0.6);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 0.95rem;
+            position: relative;
+        }
+        .pb-header .meta {
+            margin-top: 20px;
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.35);
+            position: relative;
+        }
+
+        /* Container */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Sections */
+        .pb-section {
+            padding: 48px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .pb-section:last-child { border-bottom: none; }
+        .pb-section.alt { background: var(--light); }
+
+        .pb-section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+        .pb-section-title i {
+            color: var(--orange);
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+        .pb-section-subtitle {
+            color: var(--mid);
+            font-size: 0.92rem;
+            margin-bottom: 28px;
+        }
+
+        /* Step number badges */
+        .step-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--orange);
+            color: var(--white);
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        /* What you'll build grid */
+        .build-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-top: 20px;
+        }
+        .build-item {
+            text-align: center;
+            padding: 20px 12px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        .build-item:hover {
+            border-color: var(--orange);
+            box-shadow: 0 4px 16px rgba(208,74,2,0.1);
+            transform: translateY(-3px);
+        }
+        .build-item i {
+            font-size: 1.5rem;
+            color: var(--orange);
+            margin-bottom: 8px;
+        }
+        .build-item h4 {
+            font-size: 0.82rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .build-item p {
+            font-size: 0.72rem;
+            color: var(--mid);
+            line-height: 1.5;
+        }
+
+        /* Materials table */
+        .materials-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            font-size: 0.88rem;
+        }
+        .materials-table thead th {
+            background: var(--dark);
+            color: var(--white);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 12px 16px;
+            text-align: left;
+        }
+        .materials-table tbody td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+            background: var(--white);
+            color: var(--dark);
+        }
+        .materials-table tbody tr:last-child td { border-bottom: none; }
+        .materials-table tbody tr:hover td { background: var(--orange-light); }
+        .materials-table .required {
+            display: inline-block;
+            padding: 2px 8px;
+            font-size: 0.68rem;
+            font-weight: 700;
+            border-radius: 10px;
+            text-transform: uppercase;
+        }
+        .required.must { background: rgba(224,48,30,0.1); color: var(--red); }
+        .required.nice { background: rgba(240,171,0,0.15); color: #b07d00; }
+
+        /* Prompt box */
+        .prompt-box {
+            background: #1a1a1a;
+            color: #e0e0e0;
+            border-radius: 10px;
+            padding: 28px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.82rem;
+            line-height: 1.8;
+            overflow-x: auto;
+            position: relative;
+            margin-top: 16px;
+        }
+        .prompt-box .placeholder {
+            color: var(--orange);
+            font-weight: 700;
+        }
+        .prompt-box .comment {
+            color: #6B6B6B;
+            font-style: italic;
+        }
+        .copy-hint {
+            position: absolute;
+            top: 10px;
+            right: 14px;
+            font-size: 0.68rem;
+            color: rgba(255,255,255,0.3);
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Batch flow */
+        .batch-flow {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-top: 16px;
+        }
+        .batch-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 20px 16px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .batch-card:hover {
+            border-color: var(--orange);
+            box-shadow: 0 4px 16px rgba(208,74,2,0.08);
+        }
+        .batch-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 20%;
+            right: 20%;
+            height: 3px;
+            background: var(--orange);
+            border-radius: 0 0 3px 3px;
+        }
+        .batch-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--orange);
+            opacity: 0.3;
+        }
+        .batch-card h4 {
+            font-size: 0.85rem;
+            margin: 6px 0;
+        }
+        .batch-card p {
+            font-size: 0.75rem;
+            color: var(--mid);
+            line-height: 1.5;
+        }
+        .batch-card .say {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 4px 12px;
+            background: var(--orange-light);
+            color: var(--orange);
+            font-size: 0.7rem;
+            font-weight: 700;
+            border-radius: 20px;
+        }
+
+        /* Change examples */
+        .change-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 16px;
+        }
+        .change-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 14px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.82rem;
+        }
+        .change-item i {
+            color: var(--orange);
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+        .change-item strong {
+            display: block;
+            margin-bottom: 2px;
+        }
+        .change-item span {
+            color: var(--mid);
+            font-size: 0.78rem;
+        }
+
+        /* DIY Edits */
+        .diy-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 16px;
+        }
+        .diy-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        .diy-card:hover {
+            border-color: var(--orange);
+            box-shadow: 0 4px 12px rgba(208,74,2,0.06);
+        }
+        .diy-card h4 {
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .diy-card h4 i { color: var(--orange); font-size: 0.85rem; }
+        .diy-card p {
+            font-size: 0.82rem;
+            color: var(--mid);
+            margin-bottom: 8px;
+        }
+        .diy-card code {
+            display: block;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            line-height: 1.6;
+            overflow-x: auto;
+            margin-top: 8px;
+        }
+        .diy-card code .hl { color: var(--orange); }
+
+        /* Tips */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-top: 16px;
+        }
+        .tip-card {
+            background: var(--white);
+            border-left: 3px solid var(--orange);
+            border-radius: 0 8px 8px 0;
+            padding: 16px;
+            font-size: 0.82rem;
+        }
+        .tip-card strong {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 0.78rem;
+            color: var(--dark);
+        }
+        .tip-card span {
+            color: var(--mid);
+            font-size: 0.78rem;
+            line-height: 1.6;
+        }
+
+        /* Quick ref table */
+        .ref-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            font-size: 0.85rem;
+            margin-top: 16px;
+        }
+        .ref-table thead th {
+            background: var(--dark);
+            color: var(--white);
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 10px 16px;
+            text-align: left;
+        }
+        .ref-table tbody td {
+            padding: 10px 16px;
+            border-bottom: 1px solid var(--border);
+            background: var(--white);
+            color: var(--dark);
+        }
+        .ref-table tbody tr:last-child td { border-bottom: none; }
+        .ref-table tbody tr:hover td { background: var(--orange-light); }
+        .ref-table code {
+            background: var(--light);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: var(--orange);
+        }
+
+        /* Footer */
+        .pb-footer {
+            background: var(--dark);
+            padding: 28px 24px;
+            text-align: center;
+        }
+        .pb-footer p {
+            color: rgba(255,255,255,0.4);
+            font-size: 0.78rem;
+        }
+        .pb-footer a { color: var(--orange); }
+
+        /* Callout box */
+        .callout {
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 16px 0;
+            font-size: 0.85rem;
+        }
+        .callout.warning {
+            background: rgba(240,171,0,0.1);
+            border-left: 3px solid var(--yellow);
+        }
+        .callout.success {
+            background: rgba(34,139,34,0.08);
+            border-left: 3px solid #228B22;
+        }
+        .callout.info {
+            background: rgba(208,74,2,0.06);
+            border-left: 3px solid var(--orange);
+        }
+        .callout strong { display: block; margin-bottom: 4px; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .build-grid, .batch-flow { grid-template-columns: repeat(2, 1fr); }
+            .change-list, .diy-grid { grid-template-columns: 1fr; }
+            .tips-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 480px) {
+            .build-grid, .batch-flow { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="pb-header">
+    <div class="eyebrow">PwC Managed Services — Internal Playbook</div>
+    <h1>Build Your Own <span>BD Hub</span> Microsite</h1>
+    <p>A step-by-step guide to building a fully functional, PwC-branded internal website using Claude AI — from materials prep to deployment.</p>
+    <div class="meta">Created by Jillyen Pagcaliwagan, PMO BD Lead &bull; Based on the PH PMO BD Hub build experience</div>
+</header>
+
+<!-- ===== WHAT YOU'LL BUILD ===== -->
+<section class="pb-section">
+    <div class="container">
+        <h2 class="pb-section-title"><i class="fas fa-layer-group"></i> What You'll Build</h2>
+        <p class="pb-section-subtitle">A multi-page, responsive, PwC-branded microsite with these pages:</p>
+        <div class="build-grid">
+            <div class="build-item">
+                <i class="fas fa-home"></i>
+                <h4>Home Page</h4>
+                <p>Hero banner, service overview, approach, case studies, quick links</p>
+            </div>
+            <div class="build-item">
+                <i class="fas fa-book"></i>
+                <h4>Guidebooks</h4>
+                <p>Links to playbooks with summaries &amp; open buttons</p>
+            </div>
+            <div class="build-item">
+                <i class="fas fa-file-alt"></i>
+                <h4>Templates Library</h4>
+                <p>Searchable, filterable table with links to files</p>
+            </div>
+            <div class="build-item">
+                <i class="fas fa-layer-group"></i>
+                <h4>Service Catalogue</h4>
+                <p>Detailed service descriptions, lifecycle, case studies</p>
+            </div>
+            <div class="build-item">
+                <i class="fas fa-briefcase"></i>
+                <h4>BD Tools</h4>
+                <p>Pitches, FAQs, positioning guides, capability statements</p>
+            </div>
+            <div class="build-item">
+                <i class="fas fa-sitemap"></i>
+                <h4>Framework</h4>
+                <p>Visual governance or delivery framework</p>
+            </div>
+            <div class="build-item">
+                <i class="fas fa-users"></i>
+                <h4>Our Team</h4>
+                <p>Team profiles with photos, roles, experience</p>
+            </div>
+            <div class="build-item">
+                <i class="fas fa-robot"></i>
+                <h4>Chatbot</h4>
+                <p>Built-in assistant answering FAQs about your services</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== MATERIALS CHECKLIST ===== -->
+<section class="pb-section alt">
+    <div class="container">
+        <h2 class="pb-section-title"><i class="fas fa-clipboard-check"></i> Step 1: Prepare Your Materials</h2>
+        <p class="pb-section-subtitle">Gather these <strong>before</strong> your first message to Claude. The more you provide upfront, the better the output.</p>
+
+        <table class="materials-table">
+            <thead>
+                <tr>
+                    <th style="width:5%">#</th>
+                    <th style="width:22%">Material</th>
+                    <th style="width:10%">Format</th>
+                    <th style="width:10%">Priority</th>
+                    <th style="width:53%">What Claude uses it for &amp; tips</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><strong>Service Catalogue / One-Pager</strong></td>
+                    <td>PDF, PPTX</td>
+                    <td><span class="required must">Must have</span></td>
+                    <td>Drives home page, service catalogue, and BD tools content. <em>Tip: The FY26 one-pager worked great for us.</em></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><strong>Guidebooks / Playbooks</strong></td>
+                    <td>PPTX + links</td>
+                    <td><span class="required must">Must have</span></td>
+                    <td>Creates the guidebooks page with summaries. <em>Tip: Provide the SharePoint links — Claude will add "Open Presentation" buttons.</em></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><strong>Templates List</strong></td>
+                    <td>Excel (.xlsx)</td>
+                    <td><span class="required must">Must have</span></td>
+                    <td>Builds the searchable template library. <em>Tip: Include columns for name, category, file type, description, and SharePoint link. This is the most important file.</em></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><strong>Team CVs</strong></td>
+                    <td>PPTX, DOCX</td>
+                    <td><span class="required must">Must have</span></td>
+                    <td>Creates team page with profiles. <em>Tip: Claude will extract names, roles, years of experience, and certifications.</em></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><strong>Team Photos</strong></td>
+                    <td>PNG, JPG</td>
+                    <td><span class="required nice">Nice to have</span></td>
+                    <td>Profile photos on team page. <em>Tip: Name each file by person (e.g., Jill.png). Square crop works best. Can be added later.</em></td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td><strong>Governance / Framework Visual</strong></td>
+                    <td>HTML, PPTX, IMG</td>
+                    <td><span class="required nice">Nice to have</span></td>
+                    <td>Becomes its own Framework page. <em>Tip: If you have it in HTML already, Claude can integrate it directly.</em></td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td><strong>Case Study Details</strong></td>
+                    <td>Any</td>
+                    <td><span class="required nice">Nice to have</span></td>
+                    <td>Adds credibility to service catalogue. <em>Tip: If not provided, Claude generates realistic examples based on your services.</em></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="callout warning" style="margin-top:20px;">
+            <strong>⚡ Biggest Lesson Learned:</strong>
+            <span>The Templates Excel with real SharePoint links is the single most important file. Get this right first. If links are placeholder text, they won't work on the live site and you'll need to update them manually later.</span>
+        </div>
+    </div>
+</section>
+
+<!-- ===== THE MASTER PROMPT ===== -->
+<section class="pb-section">
+    <div class="container">
+        <h2 class="pb-section-title"><i class="fas fa-terminal"></i> Step 2: Send the Master Prompt</h2>
+        <p class="pb-section-subtitle">Copy this prompt, fill in the <span style="color:var(--orange);font-weight:700;">[PLACEHOLDERS]</span>, attach your materials, and send as your first message to Claude.</p>
+
+        <div class="prompt-box">
+            <span class="copy-hint">📋 Copy this entire block</span>
+I am from PwC <span class="placeholder">[YOUR TERRITORY]</span> – Managed Services (<span class="placeholder">[YOUR SERVICE LINE]</span>).
+
+I need you to create a complete working website for our Business Development operations.
+The site will be used internally by our team for:
+✅ Accessing guidebooks
+✅ Browsing templates
+✅ Supporting BD conversations
+✅ Showcasing our offerings
+✅ Internal onboarding and enablement
+
+Please create these pages:
+
+A. HOME PAGE
+- Overview of our services: <span class="placeholder">[LIST YOUR SERVICES e.g., PMO as a Service, VRO, Admin]</span>
+- Highlight our methodology: <span class="placeholder">[YOUR METHODOLOGY e.g., Enable–Execute–Evolve]</span>
+- Key stats: <span class="placeholder">[YOUR NUMBERS e.g., 30-40% savings, 19 templates]</span>
+- Navigation to all subpages
+
+B. GUIDEBOOKS PAGE — Link to these files:
+- <span class="placeholder">[Guidebook 1 name]</span> — <span class="placeholder">[SharePoint link]</span>
+- <span class="placeholder">[Guidebook 2 name]</span> — <span class="placeholder">[SharePoint link]</span>
+- <span class="placeholder">[Guidebook 3 name]</span> — <span class="placeholder">[SharePoint link]</span>
+
+C. TEMPLATES LIBRARY — Searchable/filterable table from attached Excel
+
+D. SERVICE CATALOGUE — Detailed service descriptions + engagement lifecycle
+
+E. BD TOOLS — Elevator pitches, FAQ, positioning guides
+
+F. TEAM PAGE — From attached CVs. Include photos.
+
+G. BUILT-IN CHATBOT — Rule-based, answers questions about templates, services, contacts
+
+BRANDING: PwC Orange #D04A02, Dark Gray #2D2D2D, Light Gray #F2F2F2
+Clean, professional, consulting-style layout. Mobile responsive.
+
+Call the site: <span class="placeholder">[YOUR SITE NAME e.g., "Managed Services - PMO BD Hub"]</span>
+
+Build in batches. I will say "Go — send Batch X" to proceed.
+
+<span class="comment">// Then attach: Service Catalogue PDF, Templates Excel, CVs PPTX, Guidebook links</span>
+        </div>
+    </div>
+</section>
+
+<!-- ===== THE BUILD PROCESS ===== -->
+<section class="pb-section alt">
+    <div class="container">
+        <h2 class="pb-section-title"><i class="fas fa-cogs"></i> Step 3: Build in Batches</h2>
+        <p class="pb-section-subtitle">Claude delivers the site in 4 batches. After each batch, save the files, test in your browser, and note any issues before proceeding.</p>
+
+        <div class="batch-flow">
+            <div class="batch-card">
+                <div class="batch-num">01</div>
+                <h4>Foundation</h4>
+                <p>CSS styles, Home page, navigation JS, chatbot engine</p>
+                <div class="say">"Go — send Batch 1"</div>
+            </div>
+            <div class="batch-card">
+                <div class="batch-num">02</div>
+                <h4>Content Pages</h4>
+                <p>Guidebooks page, Service Catalogue page</p>
+                <div class="say">"Go — send Batch 2"</div>
+            </div>
+            <div class="batch-card">
+                <div class="batch-num">03</div>
+                <h4>Templates Engine</h4>
+                <p>Templates page, search/filter JS, chatbot knowledge base</p>
+                <div class="say">"Go — send Batch 3"</div>
+            </div>
+            <div class="batch-card">
+                <div class="batch-num">04</div>
+                <h4>BD &amp; Team</h4>
+                <p>BD Tools page, Team page, framework, remaining pages</p>
+                <div class="say">"Go — send Batch 4"</div>
+            </div>
+        </div>
+
+        <div class="callout info" style="margin-top:20px;">
+            <strong>💡 After each batch:</strong>
+            <span>Create the folder structure on your computer (css/, js/, photos/). Save each file with the exact filename specified. Open index.html in your browser to test. Everything works locally — no server needed.</span>
+        </div>
+    </div>
+</section>
+
+<!-- ===== REQUESTING CHANGES ===== -->
+<section class="pb-section">
+    <div class="container">
+        <h2 class="pb-section-title"><i class="fas fa-edit"></i> Step 4: Request Changes</h2>
+        <p class="pb-section-subtitle">You will want changes — that's normal! Here's how to request them effectively.</p>
+
+        <div class="callout success">
+            <strong>✅ Golden Rule: Bundle your changes!</strong>
+            <span>Don't send one change at a time. Collect all issues, then send them in one message as a bulleted list. This saves time and prevents files from getting out of sync.</span>
+        </div>
+
+        <div class="change-list">
+            <div class="change-item">
+                <i class="fas fa-palette"></i>
+                <div>
+                    <strong>Fix styling</strong>
+                    <span>"The font color in service catalogue is not readable — please fix"</span>
+                </div>
+            </div>
+            <div class="change-item">
+                <i class="fas fa-trash"></i>
+                <div>
+                    <strong>Remove something</strong>
+                    <span>"Please remove the BD sponsor section from the home page"</span>
+                </div>
+            </div>
+            <div class="change-item">
+                <i class="fas fa-exchange-alt"></i>
+                <div>
+                    <strong>Rename items</strong>
+                    <span>"Rename 'Playbook' to 'Guidebook' everywhere for consistency"</span>
+                </div>
+            </div>
+            <div class="change-item">
+                <i class="fas fa-plus-circle"></i>
+                <div>
+                    <strong>Add a new page</strong>
+                    <span>"Can you add a Framework page? I've attached the file"</span>
+                </div>
+            </div>
+            <div class="change-item">
+                <i class="fas fa-link"></i>
+                <div>
+                    <strong>Fix broken links</strong>
+                    <span>"The link to VRO Guidebook is not working"</span>
+                </div>
+            </div>
+            <div class="change-item">
+                <i class="fas fa-camera"></i>
+                <div>
+                    <strong>Add photos</strong>
+                    <span>"I've attached team photos. Please add them to the team page"</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="callout warning" style="margin-top:20px;">
+            <strong>⚠️ Important: If you edited files locally, re-upload them!</strong>
+            <span>Say: "I made some changes. Here are my latest files. Please use these as the base and apply these changes: [list]" — this prevents Claude from overwriting your edits.</span>
+        </div>
+    </div>
+</section>
+
+<!-- ===== DIY EDITS ===== -->
+<section class="pb-section alt">
+    <div class="container">
+        <h2 class="pb-section-title"><i class="fas fa-wrench"></i> Step 5: Self-Service Quick Edits</h2>
+        <p class="pb-section-subtitle">For small changes, you can edit the files yourself — no need to go back to Claude.</p>
+
+        <div class="diy-grid">
+            <div class="diy-card">
+                <h4><i class="fas fa-camera"></i> Add/Change Team Photos</h4>
+                <p>Save photos in the <strong>photos/</strong> folder. Name them exactly as referenced in team.html.</p>
+                <code>
+<span class="hl">photos/</span>Jill.png<br>
+<span class="hl">photos/</span>Kat.png<br>
+<span class="hl">photos/</span>Randal.jpg<br><br>
+<span class="hl">Tip:</span> Square photos look best (auto-cropped to circles).<br>
+<span class="hl">Tip:</span> If extension changes, open team.html → Ctrl+H →<br>
+Find: <span class="hl">.png"</span> → Replace: <span class="hl">.jpg"</span> → Replace All
+                </code>
+            </div>
+            <div class="diy-card">
+                <h4><i class="fas fa-plus"></i> Add a New Template</h4>
+                <p>Open <strong>js/templates.js</strong>, find the templateData array, and add a new entry:</p>
+                <code>
+{<br>
+&nbsp;&nbsp;name: <span class="hl">"Your Template Name"</span>,<br>
+&nbsp;&nbsp;category: <span class="hl">"PMO"</span>,<br>
+&nbsp;&nbsp;fileType: <span class="hl">"xlsx"</span>,<br>
+&nbsp;&nbsp;description: <span class="hl">"What it does"</span>,<br>
+&nbsp;&nbsp;link: <span class="hl">"https://sharepoint-link"</span><br>
+},
+                </code>
+            </div>
+            <div class="diy-card">
+                <h4><i class="fas fa-link"></i> Update Guidebook Links</h4>
+                <p>Open <strong>guidebooks.html</strong> and use Find &amp; Replace:</p>
+                <code>
+Ctrl+H<br>
+Find: <span class="hl">https://old-placeholder-url</span><br>
+Replace: <span class="hl">https://real-sharepoint-link</span><br>
+→ Replace All → Save
+                </code>
+            </div>
+            <div class="diy-card">
+                <h4><i class="fas fa-robot"></i> Update Chatbot Answers</h4>
+                <p>Open <strong>js/chatbot.js</strong>, find the knowledgeBase array, edit or add:</p>
+                <code>
+{<br>
+&nbsp;&nbsp;keywords: [<span class="hl">'your'</span>, <span class="hl">'keywords'</span>],<br>
+&nbsp;&nbsp;answer: <span class="hl">'Your answer here'</span><br>
+},<br><br>
+<span class="hl">⚠️ Use double quotes</span> inside answers<br>
+for links: &lt;a href=<span class="hl">"page.html"</span>&gt;
+                </code>
+            </div>
+        </div>
+
+        <h3 style="margin-top:32px; font-size:1.1rem;">Quick Reference: What File to Edit</h3>
+        <table class="ref-table">
+            <thead>
+                <tr>
+                    <th>I want to change...</th>
+                    <th>Edit this file</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Home page content</td><td><code>index.html</code></td></tr>
+                <tr><td>Service descriptions</td><td><code>service-catalogue.html</code></td></tr>
+                <tr><td>Guidebook links / content</td><td><code>guidebooks.html</code></td></tr>
+                <tr><td>Template list / links</td><td><code>js/templates.js</code></td></tr>
+                <tr><td>BD pitches, FAQ, positioning</td><td><code>bd-tools.html</code></td></tr>
+                <tr><td>Team members / photos</td><td><code>team.html</code> + <code>photos/</code></td></tr>
+                <tr><td>Governance framework</td><td><code>framework.html</code></td></tr>
+                <tr><td>Chatbot responses</td><td><code>js/chatbot.js</code></td></tr>
+                <tr><td>Colors, fonts, spacing</td><td><code>css/styles.css</code></td></tr>
+                <tr><td>Navigation links</td><td>Every <code>.html</code> file (nav section)</td></tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- ===== DEPLOYMENT ===== -->
+<section class="pb-section">
+    <div class="container">
+        <h2 class="pb-section-title"><i class="fas fa-rocket"></i> Step 6: Deploy Your Site</h2>
+        <p class="pb-section-subtitle">Get your site live and shareable.</p>
+
+        <div class="diy-grid">
+            <div class="diy-card">
+                <h4><i class="fas fa-desktop"></i> Option A: Local (Testing)</h4>
+                <p>Just double-click <strong>index.html</strong> — it opens in your browser with full styling. Share the folder via Teams/OneDrive.</p>
+                <code>
+<span class="hl">Pros:</span> Instant, no setup<br>
+<span class="hl">Cons:</span> Only you can see it<br>
+<span class="hl">Best for:</span> Testing &amp; reviewing
+                </code>
+            </div>
+            <div class="diy-card">
+                <h4><i class="fab fa-github"></i> Option B: GitHub Pages (Recommended)</h4>
+                <p>Free hosting with a shareable URL. Full CSS/JS support.</p>
+                <code>
+1. Create account at <span class="hl">github.com</span><br>
+2. New repo → name it → <span class="hl">Private</span><br>
+3. Upload all files (contents, not folder)<br>
+4. Settings → Pages → main branch → Save<br>
+5. Wait 2 min → <span class="hl">live URL!</span><br><br>
+<span class="hl">⚠️ Don't use SharePoint embed</span> — it<br>
+strips all CSS and JS. Site looks basic.
+                </code>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PRO TIPS ===== -->
+<section class="pb-section alt">
+    <div class="container">
+        <h2 class="pb-section-title"><i class="fas fa-lightbulb"></i> Pro Tips &amp; Lessons Learned</h2>
+        <p class="pb-section-subtitle">Things we learned the hard way so you don't have to.</p>
+
+        <div class="tips-grid">
+            <div class="tip-card">
+                <strong>📋 Prep is everything</strong>
+                <span>The more materials you give Claude upfront, the fewer rounds of changes you'll need.</span>
+            </div>
+            <div class="tip-card">
+                <strong>📊 Templates Excel is king</strong>
+                <span>Get this file perfect first — with real SharePoint links. Placeholder links = broken buttons on live site.</span>
+            </div>
+            <div class="tip-card">
+                <strong>📦 Bundle change requests</strong>
+                <span>5 changes in one message is 10x better than 5 separate messages.</span>
+            </div>
+            <div class="tip-card">
+                <strong>📤 Re-upload after local edits</strong>
+                <span>If you edited files locally, upload them back before requesting more changes from Claude.</span>
+            </div>
+            <div class="tip-card">
+                <strong>📸 Photos: name them simply</strong>
+                <span>Use Jill.png not "jill photo final (2).PNG". Crop to square. Any size works — CSS handles the rest.</span>
+            </div>
+            <div class="tip-card">
+                <strong>🚫 Skip SharePoint embed</strong>
+                <span>SharePoint strips CSS/JS from embedded HTML. Your beautiful site will look like plain text. Use GitHub Pages instead.</span>
+            </div>
+            <div class="tip-card">
+                <strong>🔍 Test after every batch</strong>
+                <span>Open index.html in browser after each batch. Catch issues early before they compound.</span>
+            </div>
+            <div class="tip-card">
+                <strong>✏️ "PwC" not "PWC"</strong>
+                <span>Tell Claude explicitly if casing matters. Small brand details get missed if you don't specify.</span>
+            </div>
+            <div class="tip-card">
+                <strong>🤖 Chatbot is fragile</strong>
+                <span>A single misplaced quote in chatbot.js breaks the entire chatbot. Always test it after changes.</span>
+            </div>
+            <div class="tip-card">
+                <strong>🔗 Test all links</strong>
+                <span>Click every button on every page after deployment. Placeholder URLs from the build will need replacing.</span>
+            </div>
+            <div class="tip-card">
+                <strong>📱 Check mobile view</strong>
+                <span>Press F12 in your browser → toggle device toolbar to see how it looks on phones. The site is responsive.</span>
+            </div>
+            <div class="tip-card">
+                <strong>🔄 You can always come back</strong>
+                <span>Upload your files to a new Claude chat anytime for more changes. Just provide context on what you need.</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="pb-footer">
+    <p>Built with ❤️ by PwC PH Managed Services PMO &bull; Powered by Claude AI</p>
+    <p style="margin-top:8px;">&copy; 2025 PwC Philippines. Internal use only.</p>
+</footer>
+
+</body>
+</html>
