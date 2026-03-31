@@ -1985,65 +1985,374 @@ p {
 }
 
 
-/* ---------- FIX: Service Comparison Table readability ---------- */
-.section .templates-table tbody td {
-    background: var(--pwc-white) !important;
-    color: var(--pwc-dark-gray) !important;
+/* ============================================================
+   COMPREHENSIVE READABILITY FIX
+   ============================================================ */
+
+/* ----- DARK SECTIONS: force white/light text ----- */
+.section-dark,
+.section-dark .container {
+    color: #FFFFFF !important;
 }
 
-.section .templates-table tbody td strong {
-    color: var(--pwc-dark-gray) !important;
+.section-dark h2,
+.section-dark h3,
+.section-dark h4 {
+    color: #FFFFFF !important;
 }
 
-.section .templates-table tbody tr:nth-child(even) td {
-    background: var(--pwc-bg-subtle) !important;
+.section-dark p,
+.section-dark li,
+.section-dark span,
+.section-dark td {
+    color: rgba(255,255,255,0.85) !important;
 }
 
-.section .templates-table tbody tr:hover td {
-    background: rgba(208,74,2,0.04) !important;
+.section-dark .section-title {
+    color: #FFFFFF !important;
 }
 
-/* Force section backgrounds to be explicit */
-.section:not(.section-dark):not(.section-accent):not(.section-orange) {
-    background: var(--pwc-white);
-    color: var(--pwc-dark-gray);
+.section-dark .section-subtitle {
+    color: rgba(255,255,255,0.7) !important;
 }
 
-.section:not(.section-dark):not(.section-accent):not(.section-orange) .section-title {
-    color: var(--pwc-dark-gray);
+.section-dark strong {
+    color: #FFFFFF !important;
 }
 
-.section:not(.section-dark):not(.section-accent):not(.section-orange) .section-subtitle {
-    color: var(--pwc-mid-gray);
+.section-dark a {
+    color: var(--pwc-warm-yellow, #F0AB00) !important;
 }
 
+/* EXCEPTION: Comparison table inside dark section — force white bg */
+.section-dark .templates-table,
+.templates-table {
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+}
 
-/* ---------- Team Leadership Bar + Photos ---------- */
-.team-leadership-bar{display:flex;align-items:center;gap:24px;margin-bottom:40px;padding:20px 28px;background:var(--pwc-light-gray);border:1px solid var(--pwc-border);border-radius:var(--radius-lg);flex-wrap:wrap}
-.team-leadership-item{display:flex;align-items:center;gap:12px}
-.team-leadership-avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;color:#fff;flex-shrink:0}
-.team-leadership-info h4{font-family:var(--font-body);font-size:.85rem;font-weight:600;color:var(--pwc-dark-gray);margin-bottom:1px}
-.team-leadership-info span{font-size:.72rem;color:var(--pwc-mid-gray)}
-.team-leadership-divider{width:1px;height:32px;background:var(--pwc-border)}
+.section-dark .templates-table tbody td,
+.templates-table tbody td {
+    background: #FFFFFF !important;
+    color: #2D2D2D !important;
+}
+
+.section-dark .templates-table tbody td strong,
+.templates-table tbody td strong {
+    color: #2D2D2D !important;
+}
+
+.section-dark .templates-table tbody tr:nth-child(even) td,
+.templates-table tbody tr:nth-child(even) td {
+    background: #F8F8F8 !important;
+}
+
+.section-dark .templates-table tbody tr:hover td,
+.templates-table tbody tr:hover td {
+    background: rgba(208,74,2,0.06) !important;
+}
+
+.section-dark .templates-table tbody td:first-child,
+.templates-table tbody td:first-child {
+    font-weight: 600 !important;
+    color: #2D2D2D !important;
+}
+
+/* ----- LIGHT SECTIONS (accent, plain): force dark text ----- */
+.section-accent,
+.section-accent .container {
+    color: #2D2D2D !important;
+}
+
+.section-accent h2, .section-accent h3, .section-accent h4 {
+    color: #2D2D2D !important;
+}
+
+.section-accent p, .section-accent li, .section-accent span {
+    color: #4a4a4a !important;
+}
+
+.section-accent .section-title {
+    color: #2D2D2D !important;
+}
+
+.section-accent .section-subtitle {
+    color: #6B6B6B !important;
+}
+
+.section-accent strong {
+    color: #2D2D2D !important;
+}
+
+.section-accent .service-tagline {
+    color: #D04A02 !important;
+}
+
+.section-accent .visual-stat-value {
+    color: #D04A02 !important;
+}
+
+.section-accent .visual-stat-label {
+    color: #6B6B6B !important;
+}
+
+/* Plain sections */
+.section:not(.section-dark):not(.section-accent):not(.section-orange) h3 {
+    color: #2D2D2D !important;
+}
+
+.section:not(.section-dark):not(.section-accent):not(.section-orange) p {
+    color: #4a4a4a !important;
+}
+
+.section:not(.section-dark):not(.section-accent):not(.section-orange) li {
+    color: #4a4a4a !important;
+}
+
+.section:not(.section-dark):not(.section-accent):not(.section-orange) .service-tagline {
+    color: #D04A02 !important;
+}
+
+.section:not(.section-dark):not(.section-accent):not(.section-orange) strong {
+    color: #2D2D2D !important;
+}
+
+/* ----- ORANGE SECTION: force white text ----- */
+.section-orange h2, .section-orange h3, .section-orange h4 {
+    color: #FFFFFF !important;
+}
+.section-orange p, .section-orange li {
+    color: rgba(255,255,255,0.9) !important;
+}
+
+/* ----- Timeline / Lifecycle cards ----- */
+.timeline-card, .lifecycle-card, .phase-card {
+    background: #FFFFFF !important;
+    color: #2D2D2D !important;
+}
+.timeline-card h3, .lifecycle-card h3, .phase-card h3 {
+    color: #2D2D2D !important;
+}
+.timeline-card p, .lifecycle-card p, .phase-card p,
+.timeline-card li, .lifecycle-card li, .phase-card li {
+    color: #4a4a4a !important;
+}
+
 .team-avatar-img{width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 16px;display:block;border:3px solid rgba(208,74,2,.2)}
-.team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px}
-.team-card{background:var(--pwc-white);border:1px solid var(--pwc-border);border-radius:var(--radius-lg);padding:28px 24px;text-align:center;transition:var(--transition);position:relative;overflow:hidden}
-.team-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--pwc-orange);transform:scaleX(0);transform-origin:left;transition:var(--transition)}
-.team-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-4px)}
-.team-card:hover::before{transform:scaleX(1)}
-.team-avatar{width:80px;height:80px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;font-weight:700;color:#fff;background:var(--pwc-orange);border:3px solid rgba(208,74,2,.2)}
-.team-avatar.yellow{background:var(--pwc-warm-yellow)}.team-avatar.red{background:var(--pwc-red)}.team-avatar.dark{background:var(--pwc-dark-gray)}
-.team-card h4{font-family:var(--font-body);font-size:1.05rem;font-weight:700;margin-bottom:4px;color:var(--pwc-dark-gray)}
-.team-role{font-size:.82rem;font-weight:600;color:var(--pwc-orange);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;display:block}
-.team-years{font-size:.78rem;color:var(--pwc-mid-gray);margin-bottom:12px;display:block}
-.team-certs{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin-bottom:12px}
-.team-certs span{display:inline-block;padding:2px 10px;font-size:.68rem;font-weight:600;background:var(--pwc-light-gray);color:var(--pwc-mid-gray);border-radius:20px}
-.team-brief{font-size:.85rem;color:var(--pwc-mid-gray);line-height:1.6;margin:0}
-.team-card .expand-btn{display:inline-block;margin-top:10px;font-size:.82rem;font-weight:600;color:var(--pwc-orange);cursor:pointer;border:none;background:none;padding:0;font-family:var(--font-body);transition:var(--transition)}
-.team-card .expand-btn:hover{color:var(--pwc-orange-dark)}
-.team-detail{max-height:0;overflow:hidden;transition:max-height .4s ease;text-align:left;margin-top:12px}
-.team-detail.open{max-height:600px}
-.team-detail ul{padding-left:0}
-.team-detail li{position:relative;padding-left:18px;margin-bottom:6px;font-size:.82rem;color:var(--pwc-mid-gray)}
-.team-detail li::before{content:'→';position:absolute;left:0;color:var(--pwc-orange);font-size:.78rem}
-@media(max-width:768px){.team-leadership-bar{flex-direction:column;align-items:flex-start;gap:16px}.team-leadership-divider{width:100%;height:1px}.team-grid{grid-template-columns:1fr}}
+/* FINAL READABILITY FIX */
+.section-dark h2,
+.section-dark h3,
+.section-dark h4,
+.section-dark p,
+.section-dark li,
+.section-dark span,
+.section-dark strong,
+.section-dark td,
+.section-dark .section-title,
+.section-dark .section-subtitle,
+.section-dark .case-card h4,
+.section-dark .case-card p,
+.section-dark .stat-number,
+.section-dark .stat-label {
+    color: #FFFFFF !important;
+}
+
+.section-dark .section-subtitle,
+.section-dark .case-card p {
+    color: rgba(255,255,255,0.8) !important;
+}
+
+.section-dark a:not(.btn) {
+    color: #F0AB00 !important;
+}
+
+.section:not(.section-dark):not(.section-orange) h3,
+.section:not(.section-dark):not(.section-orange) .service-detail-content h3,
+.section:not(.section-dark):not(.section-orange) .service-detail-content p,
+.section:not(.section-dark):not(.section-orange) .service-detail-content li,
+.section:not(.section-dark):not(.section-orange) .service-detail-content strong,
+.section:not(.section-dark):not(.section-orange) .service-detail-visual h4,
+.section:not(.section-dark):not(.section-orange) .service-detail-visual .visual-stat-label,
+.section:not(.section-dark):not(.section-orange) .quick-card h4,
+.section:not(.section-dark):not(.section-orange) .quick-card p {
+    color: #2D2D2D !important;
+}
+
+.section:not(.section-dark):not(.section-orange) .service-tagline,
+.section:not(.section-dark):not(.section-orange) .visual-stat-value {
+    color: #D04A02 !important;
+}
+
+.section:not(.section-dark):not(.section-orange) .visual-stat-label {
+    color: #6B6B6B !important;
+}
+
+.templates-table tbody td {
+    background: #FFFFFF !important;
+    color: #2D2D2D !important;
+}
+
+.templates-table tbody td:first-child {
+    font-weight: 600 !important;
+}
+
+.templates-table tbody tr:nth-child(even) td {
+    background: #F8F8F8 !important;
+}
+
+/* FIX: Cards on dark backgrounds — dark text inside white cards */
+.section-dark .approach-card,
+.section-dark .approach-card *,
+.section-dark .convo-card,
+.section-dark .convo-card *,
+.section-dark .quick-card,
+.section-dark .quick-card *,
+.section-dark .value-card,
+.section-dark .value-card *,
+.section-dark .case-card,
+.section-dark .case-card *,
+.section-dark .phase-card,
+.section-dark .phase-card * {
+    color: #2D2D2D !important;
+}
+
+.section-dark .approach-card p,
+.section-dark .convo-card p,
+.section-dark .quick-card p,
+.section-dark .value-card p,
+.section-dark .case-card p,
+.section-dark .phase-card p {
+    color: #4a4a4a !important;
+}
+
+.section-dark .approach-card li,
+.section-dark .convo-card li,
+.section-dark .quick-card li,
+.section-dark .value-card li {
+    color: #4a4a4a !important;
+}
+
+
+
+/* ============================================================
+   FINAL FIX — Make section-dark light gray instead of dark
+   This eliminates ALL dark-bg text readability issues.
+   ============================================================ */
+
+/* Convert dark sections to light gray — readable everywhere */
+.section-dark {
+    background: #F2F2F2 !important;
+    color: #2D2D2D !important;
+}
+
+.section-dark h2, .section-dark h3, .section-dark h4,
+.section-dark p, .section-dark li, .section-dark span,
+.section-dark strong, .section-dark td, .section-dark a:not(.btn) {
+    color: #2D2D2D !important;
+}
+
+.section-dark .section-title { color: #2D2D2D !important; }
+.section-dark .section-subtitle { color: #6B6B6B !important; }
+.section-dark .case-tag { color: #D04A02 !important; }
+.section-dark .timeline-number { color: #D04A02 !important; }
+
+/* Cards inside (now light) dark sections — white bg, dark text */
+.section-dark .timeline-card,
+.section-dark .case-card,
+.section-dark .pitch-card {
+    background: #FFFFFF !important;
+    color: #2D2D2D !important;
+}
+
+.section-dark .timeline-card h3, .section-dark .case-card h4,
+.section-dark .pitch-card h4 {
+    color: #2D2D2D !important;
+}
+
+.section-dark .timeline-card p, .section-dark .case-card p,
+.section-dark .pitch-card p {
+    color: #4a4a4a !important;
+}
+
+.section-dark .timeline-card li, .section-dark .pitch-card li {
+    color: #4a4a4a !important;
+}
+
+/* VRO section — force light bg + dark text */
+#vro {
+    background: #FFFFFF !important;
+    color: #2D2D2D !important;
+}
+#vro h3, #vro h4, #vro p, #vro li, #vro strong, #vro span {
+    color: #2D2D2D !important;
+}
+#vro .service-tagline { color: #D04A02 !important; }
+#vro .service-detail-content p, #vro .service-detail-content li { color: #4a4a4a !important; }
+#vro .visual-stat-value { color: #D04A02 !important; }
+#vro .visual-stat-label { color: #6B6B6B !important; }
+#vro .service-detail-visual h4 { color: #2D2D2D !important; }
+
+/* BD link cards — dark text on white cards */
+.bd-link-card { color: #2D2D2D !important; }
+.bd-link-card h4, .bd-link-text h4 { color: #2D2D2D !important; }
+.bd-link-card p, .bd-link-text p { color: #6B6B6B !important; }
+
+/* Orange section buttons */
+.section-orange .btn-primary { color: #D04A02 !important; background: #FFFFFF !important; }
+.section-orange .btn-outline,
+.section-orange .btn-ghost,
+.section-orange .btn-outline-white { color: #FFFFFF !important; border-color: #FFFFFF !important; background: transparent !important; }
+
+/* Service detail text */
+.service-detail-content h3 { color: #2D2D2D !important; }
+.service-detail-content .service-tagline { color: #D04A02 !important; }
+.service-detail-content p, .service-detail-content li { color: #4a4a4a !important; }
+.service-detail-content strong { color: #2D2D2D !important; }
+.visual-stat-value { color: #D04A02 !important; }
+.visual-stat-label { color: #6B6B6B !important; }
+.service-detail-visual h4 { color: #2D2D2D !important; }
+
+/* Lifecycle cards */
+.lifecycle-step { background: #FFFFFF !important; }
+.lifecycle-step h4, .lifecycle-step p, .lifecycle-step li { color: #2D2D2D !important; }
+.lifecycle-step p, .lifecycle-step li { color: #4a4a4a !important; }
+
+/* Quick cards */
+.quick-card h4 { color: #2D2D2D !important; }
+.quick-card p { color: #6B6B6B !important; }
+
+/* Comparison table */
+.templates-table tbody td { background: #FFFFFF !important; color: #2D2D2D !important; }
+.templates-table tbody td:first-child { font-weight: 600 !important; }
+.templates-table tbody tr:nth-child(even) td { background: #F8F8F8 !important; }
+
+/* Page banner + hero stay dark with white text */
+.page-banner, .page-banner * { color: #FFFFFF !important; }
+.page-banner .hero-eyebrow { color: #F0AB00 !important; }
+.hero, .hero * { color: #FFFFFF !important; }
+
+/* Footer stays dark */
+.site-footer { background: var(--pwc-dark-gray) !important; }
+.site-footer, .site-footer * { color: rgba(255,255,255,0.6) !important; }
+.site-footer h4 { color: #FFFFFF !important; }
+
+/* Buttons general */
+.btn-primary, .btn-primary * { color: #FFFFFF !important; }
+.btn-outline, .btn-ghost { color: #D04A02 !important; border-color: #D04A02 !important; }
+.card-link { color: #D04A02 !important; }
+
+/* FIX: Orange section — left button text visible */
+.section-orange a.btn:first-of-type {
+    color: #D04A02 !important;
+    background: #FFFFFF !important;
+}
+
+.section-orange a.btn:first-of-type i {
+    color: #D04A02 !important;
+}
+/* Framework dark bars — override section rules */
+.gov-overview-bar h3 { color: #FFFFFF !important; }
+.gov-overview-bar p { color: rgba(255,255,255,0.85) !important; }
+.gov-vro-strip h4 { color: #D04A02 !important; }
+.gov-vro-strip p { color: #FFFFFF !important; }
+.gov-footer-bar span { color: #FFFFFF !important; }
