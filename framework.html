@@ -12,11 +12,11 @@
 <style>
     .gov-overview-bar{background:linear-gradient(135deg,#2D2D2D,#1a1a1a);border-radius:var(--radius-lg);padding:36px 48px;text-align:center;position:relative;overflow:hidden;margin-bottom:0;border-bottom-left-radius:0;border-bottom-right-radius:0}
     .gov-overview-bar::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,transparent,#eb8c00,#D04A02,#eb8c00,transparent)}
-    .gov-overview-bar h3{color:#fff;font-size:1.5rem;margin-bottom:8px}
-    .gov-overview-bar p{color:rgba(255,255,255,.55);font-size:.95rem;max-width:680px;margin:0 auto}
+    .gov-overview-bar h3{color:#ffffff;font-size:1.5rem;margin-bottom:8px}
+    .gov-overview-bar p{color:#FFFFFF;font-size:.95rem;max-width:680px;margin:0 auto}
     .gov-vro-strip{background:linear-gradient(135deg,#3a3a3a,#2D2D2D);padding:18px 32px;text-align:center}
     .gov-vro-strip h4{color:#D04A02;font-family:var(--font-body);font-size:1.05rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;margin-bottom:4px}
-    .gov-vro-strip p{color:rgba(255,255,255,.45);font-size:.78rem;margin:0}
+    .gov-vro-strip p{color:#FFFFFF;font-size:.78rem;margin:0}
     .gov-pmo-body{background:linear-gradient(180deg,#fff8f0,#ffedda);border:2px solid #ffd9b3;border-top:none;padding:36px 32px 28px}
     .gov-pmo-title{text-align:center;margin-bottom:28px}
     .gov-pmo-title h4{color:#D04A02;font-size:1.3rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
@@ -36,7 +36,7 @@
     .gov-tag{background:#fff7ee;border:1.5px solid #ffd9b3;border-radius:20px;padding:7px 18px;font-size:.8rem;font-weight:600;color:#b05a1a;transition:all .2s ease}
     .gov-tag:hover{background:#ffedda;border-color:#eb8c00;color:#D04A02}
     .gov-footer-bar{background:var(--pwc-dark-gray);border-radius:0 0 var(--radius-lg) var(--radius-lg);padding:14px 32px;display:flex;justify-content:space-between;align-items:center}
-    .gov-footer-bar span{color:rgba(255,255,255,.35);font-size:.7rem;text-transform:uppercase;letter-spacing:.5px}
+    .gov-footer-bar span{color:#FFFFFF;font-size:.7rem;text-transform:uppercase;letter-spacing:.5px}
     .gov-footer-bar .pwc-mark{color:#D04A02;font-family:var(--font-heading);font-weight:700;font-size:.9rem}
     .desc-cards-row{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
     .desc-card-item{display:flex;align-items:flex-start;gap:14px;background:#fff;border:1px solid var(--pwc-border);border-radius:var(--radius-md);padding:22px;transition:all .3s ease}
@@ -51,6 +51,10 @@
     .phase-detail-card h4{font-family:var(--font-body);font-size:1rem;margin-bottom:14px}
     @media(max-width:768px){.phases-row{flex-direction:column;gap:12px}.phase-connector{width:auto;height:30px}.desc-cards-row{grid-template-columns:1fr}.phase-detail-grid{grid-template-columns:1fr 1fr}}
     @media(max-width:480px){.phase-detail-grid{grid-template-columns:1fr}}
+.gov-overview-bar h3 { color: #FFFFFF !important; }
+.gov-overview-bar p { color: rgba(255,255,255,0.85) !important; }
+.gov-vro-strip h4 { color: #D04A02 !important; }
+.gov-vro-strip p { color: #FFFFFF !important; }
 </style>
 
 <div class="nav-overlay" id="navOverlay"></div>
