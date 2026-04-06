@@ -45,7 +45,7 @@
             ],
             "typicalTeamSize": "3-15 FTEs",
             "engagementDuration": "6-24 months",
-            "costSavings": "30-40% vs onshore",
+            "costSavings": "Cost-optimised vs onshore",
             "mobilisationTime": "2-4 weeks",
             "toolsSupported": ["MS Project", "Jira", "Smartsheet", "Excel", "PowerPoint"]
         },
@@ -64,7 +64,7 @@
             ],
             "typicalTeamSize": "2-8 FTEs",
             "engagementDuration": "12-36 months",
-            "costSavings": "30-40% vs onshore",
+            "costSavings": "Cost-optimised vs onshore",
             "mobilisationTime": "2-3 weeks",
             "toolsSupported": ["Excel", "PowerPoint", "Power BI", "Tableau"]
         },
