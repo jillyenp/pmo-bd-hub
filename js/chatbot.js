@@ -54,7 +54,7 @@
         },
         {
             keywords: ['savings', 'cost', 'benefit', 'value proposition', 'why managed services'],
-            answer: 'PwC Managed Services delivers <strong>30–40% cost savings</strong> compared to onshore delivery, while maintaining PwC quality standards.<br><br>Key value drivers:<br>• Scalable, on-demand resourcing<br>• Standardised, repeatable delivery<br>• Ready-to-deploy templates<br>• Proven governance frameworks<br>• Continuous improvement culture<br><br>👉 <a href="service-catalogue.html">View full Service Catalogue</a>'
+            answer: 'PwC Managed Services delivers <strong>significant cost savings</strong> compared to onshore delivery, while maintaining PwC quality standards.<br><br>Key value drivers:<br>• Scalable, on-demand resourcing<br>• Standardised, repeatable delivery<br>• Ready-to-deploy templates<br>• Proven governance frameworks<br>• Continuous improvement culture<br><br>👉 <a href="service-catalogue.html">View full Service Catalogue</a>'
         },
         {
             keywords: ['bd', 'business development', 'pitch', 'elevator', 'position', 'sell'],
