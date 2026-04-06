@@ -2356,11 +2356,4 @@ p {
 .gov-vro-strip h4 { color: #D04A02 !important; }
 .gov-vro-strip p { color: #FFFFFF !important; }
 .gov-footer-bar span { color: #FFFFFF !important; }
-/* FIX: Team stats visible on light bg */
-.stat-card .stat-number {
-    color: #D04A02 !important;
-}
 
-.stat-card .stat-label {
-    color: #2D2D2D !important;
-}
